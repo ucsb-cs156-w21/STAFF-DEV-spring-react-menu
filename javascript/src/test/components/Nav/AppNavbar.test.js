@@ -21,7 +21,7 @@ describe("AppNavbar tests", () => {
         <AppNavbar />
       </Router>
     );
-    const brandElement = getByText(/MenuManger/);
+    const brandElement = getByText(/MenuManager/);
     expect(brandElement).toBeInTheDocument();
   });
   test("should have the correct links in the navbar", () => {
