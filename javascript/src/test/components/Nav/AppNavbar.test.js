@@ -21,7 +21,7 @@ describe("AppNavbar tests", () => {
         <AppNavbar />
       </Router>
     );
-    const brandElement = getByText(/Changeme To App Name/);
+    const brandElement = getByText(/MenuManger/);
     expect(brandElement).toBeInTheDocument();
   });
   test("should have the correct links in the navbar", () => {
@@ -31,7 +31,6 @@ describe("AppNavbar tests", () => {
         <AppNavbar />
       </Router>
     );
-
 
     const userInfoLink = getByText(/Profile/);
     expect(userInfoLink.href).toMatch("/profile");

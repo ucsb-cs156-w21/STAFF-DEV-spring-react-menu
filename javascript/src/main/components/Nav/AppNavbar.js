@@ -7,28 +7,24 @@ import useSWR from "swr";
 import { useAuth0 } from "@auth0/auth0-react";
 import { fetchWithToken } from "main/utils/fetch";
 
-
 function AppNavbar() {
   const { getAccessTokenSilently: getToken } = useAuth0();
-  const { data: roleInfo } = useSWR(
-    ["/api/myRole", getToken],
-    fetchWithToken
-  );
+  const { data: roleInfo } = useSWR(["/api/myRole", getToken], fetchWithToken);
   const isAdmin = roleInfo && roleInfo.role.toLowerCase() === "admin";
 
   return (
     <Navbar bg="dark" variant="dark">
       <LinkContainer to={""}>
-        <Navbar.Brand data-testid="brand">Changeme To App Name</Navbar.Brand>
+        <Navbar.Brand data-testid="brand">MenuManager</Navbar.Brand>
       </LinkContainer>
       <Nav>
-        { isAdmin &&
-          (<LinkContainer to={"/admin"}>
+        {isAdmin && (
+          <LinkContainer to={"/admin"}>
             <Nav.Link>Admin</Nav.Link>
-          </LinkContainer>)
-        }
+          </LinkContainer>
+        )}
         <LinkContainer to={"/about"}>
-            <Nav.Link>About</Nav.Link>
+          <Nav.Link>About</Nav.Link>
         </LinkContainer>
         <ProfileNav />
       </Nav>
